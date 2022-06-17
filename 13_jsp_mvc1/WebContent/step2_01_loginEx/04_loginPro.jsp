@@ -15,7 +15,7 @@
 		String passwd = request.getParameter("passwd");
 		
 		// DB 연동해서 로그인 여부 확인
-		boolean isValidMember = MemberDao.getinstance().login(id, passwd);
+		boolean isValidMember = MemberDao.getInstance().login(id, passwd);
 		
 		if (isValidMember){
 			session.setAttribute("id", id);

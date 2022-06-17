@@ -14,16 +14,16 @@
 		if (id == null){
 	%>
 			<h1>JUST DO IT</h1>
-			<p>Join!</p>
+			<p><a href="01_insert.jsp">Join!</a></p>
 			<p><a href="03_login.jsp">Login!</a></p>
 	<%		
 		}
 		else {
 	%>
 			<h1>Welcome!! <%=id %></h1>
-			<p>Logout!</p>
-			<p>Delete!</p>
-			<p>Update!</p>
+			<p><a href="05_logout.jsp">Logout!</a></p>	
+			<p><a href="06_delete.jsp">Delete!</a></p>
+			<p><a href="08_update.jsp">Update!</a></p>
 			
 	<%
 		}
