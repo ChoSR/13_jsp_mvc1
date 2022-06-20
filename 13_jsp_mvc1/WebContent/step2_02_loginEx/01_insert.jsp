@@ -55,7 +55,7 @@
 		
 		var passwd = document.getElementById("passwd");
 		if (passwd.value == "") {
-			alert("비밀번를 입력하세요.");
+			alert("비밀번호를 입력하세요.");
 			passwd.focus();
 			return false;
 		}

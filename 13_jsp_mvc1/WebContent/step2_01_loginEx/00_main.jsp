@@ -21,7 +21,7 @@
 		else {
 	%>
 			<h1>Welcome!! <%=id %></h1>
-			<p><a href="05_logout.jsp">Logout!</a></p>	
+			<p><a href="05_logout.jsp">Logout!</a></p>
 			<p><a href="06_delete.jsp">Delete!</a></p>
 			<p><a href="08_update.jsp">Update!</a></p>
 			

@@ -30,9 +30,9 @@
          			<a href="03_login.jsp" class="btn btn-outline btn-xl js-scroll-trigger">Login!</a>			         
 	<% 
        			} 
-       			else { 
+       			else {
 	%>
-					<h1 class="mb-5">Welcome!<%=id %></h1>
+					<h1 class="mb-5">Welcome! <%=id %></h1>
          			<a href="05_logout.jsp" class="btn btn-outline btn-xl js-scroll-trigger">Logout!</a>
          			<a href="06_delete.jsp" class="btn btn-outline btn-xl js-scroll-trigger">Delete!</a>
          			<a href="08_update.jsp" class="btn btn-outline btn-xl js-scroll-trigger">Modify!</a>
