@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class BoardDao {
 	
@@ -63,4 +64,85 @@ public class BoardDao {
 			try {conn.close();} catch (SQLException e) {e.printStackTrace();}
 		}
 	}
+	
+	// 전체 게시글을 조회하는 DAO
+	public ArrayList<BoardDto> getAllboard() {
+		
+		ArrayList<BoardDto> boardList = new ArrayList<BoardDto>();
+		
+		try {
+			
+			conn = getConnection();
+			
+			pstmt = conn.prepareStatement("SELECT * FROM BOARD");
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				BoardDto boardDto = new BoardDto();
+				boardDto.setNum(rs.getInt("NUM"));
+				boardDto.setWriter(rs.getString("WRITER"));
+				boardDto.setEmail(rs.getString("EMAIL"));
+				boardDto.setSubject(rs.getString("SUBJECT"));
+				boardDto.setPassword(rs.getString("PASSWORD"));
+				boardDto.setRegDate(rs.getDate("REG_DATE"));
+				boardDto.setReadCount(rs.getInt("READ_COUNT"));
+				boardDto.setContent(rs.getString("CONTENT"));
+				boardList.add(boardDto);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			try {conn.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		
+		return boardList;
+	}
+	
+	// 하나의 게시글을 조회하는 DAO
+	public BoardDto getOneBoard(int num) {
+		
+		BoardDto boardDto = new BoardDto();
+		
+		try {
+			
+			
+			conn = getConnection();
+			
+			pstmt = conn.prepareStatement("UPDATE BOARD SET READ_COUNT = READ_COUNT + 1 WHERE NUM = ?");
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			
+			pstmt = conn.prepareStatement("SELECT * FROM BOARD WHERE NUM = ?");
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				boardDto.setNum(rs.getInt("NUM"));
+				boardDto.setWriter(rs.getString("WRITER"));
+				boardDto.setEmail(rs.getString("EMAIL"));
+				boardDto.setSubject(rs.getString("SUBJECT"));
+				boardDto.setPassword(rs.getString("PASSWORD"));
+				boardDto.setRegDate(rs.getDate("REG_DATE"));
+				boardDto.setReadCount(rs.getInt("READ_COUNT"));
+				boardDto.setContent(rs.getString("CONTENT"));
+				
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			try {conn.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		
+		
+		return boardDto;
+	}
+	
 }
+
