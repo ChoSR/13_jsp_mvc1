@@ -144,5 +144,12 @@ public class BoardDao {
 		return boardDto;
 	}
 	
+	// 게시글을 수정하는 DAO
+	public boolean updateBoard(BoardDto boardDto) {
+		
+		boolean isUpdate = true;
+		
+		return isUpdate;
+	}
 }
 
