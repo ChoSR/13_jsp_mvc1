@@ -46,7 +46,13 @@
 			<td>글내용</td>
 			<td><%=boardDto.getContent() %></td>
 		</tr>
-		
+		<tr>
+			<td colspan="2">
+				<input type="button" value="수정하기" onclick="location.href='06_bUpdate.jsp?num=<%=boardDto.getNum() %>'">
+				<input type="button" value="삭제하기" onclick="location.href='08_bDelete.jsp?num=<%=boardDto.getNum() %>'">
+				<input type="button" value="목록보기" onclick="location.href='04_bList.jsp'">
+			</td>
+		</tr>
 	</table>
 	
 </body>
